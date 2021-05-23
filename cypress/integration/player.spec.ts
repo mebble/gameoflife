@@ -41,4 +41,25 @@ describe('reconcile', () => {
 
         expect(newCells).to.deep.equal([]);
     });
+
+
+    it('should set the state of the position to the cell that it coincides with', () => {
+        const positions: Position[] = [
+            [0, 0],
+            [0, 1],
+            [0, 2],
+        ];
+        const cells: Cell[] = [
+            new Cell(0, 1, 'alive'),
+            new Cell(0, 2, 'dead'),
+        ];
+
+        const newCells = reconcile(positions, cells);
+
+        expect(newCells).to.deep.equal([
+            new Cell(0, 0, 'dead'),
+            new Cell(0, 1, 'alive'),
+            new Cell(0, 2, 'dead'),
+        ]);
+    });
 });

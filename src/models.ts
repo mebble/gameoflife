@@ -1,9 +1,9 @@
 type State = 'alive' | 'dead';
 
 export class Cell {
-    private x: number;
-    private y: number;
-    private state: State;
+    public x: number;
+    public y: number;
+    public state: State;
 
     constructor(x: number, y: number, state: State) {
         this.x = x;

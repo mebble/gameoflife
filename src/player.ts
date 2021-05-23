@@ -11,5 +11,11 @@ export const neighbourhood = (x: number, y: number): Position[][] => {
 };
 
 export const reconcile = (positions: Position[], cells: Cell[]): Cell[] => {
-    return positions.map(p => new Cell(p[0], p[1], 'dead'));
+    return positions.map(p => {
+        const [x, y] = p;
+        const coincided = cells.find(c => c.x === x && c.y === y);
+        return coincided
+            ? new Cell(x, y, coincided.state)
+            : new Cell(x, y, 'dead');
+    });
 };
