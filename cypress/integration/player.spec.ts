@@ -1,4 +1,4 @@
-import { neighbourhood } from '../../src/utils';
+import { neighbourhood } from '../../src/player';
 
 describe('neighbourhood', () => {
     it('should return neighbours of an x,y pair and itself', () => {
