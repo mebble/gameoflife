@@ -1,4 +1,3 @@
-type Position = [x: number, y: number];
 type State = 'alive' | 'dead';
 
 export class Cell {
