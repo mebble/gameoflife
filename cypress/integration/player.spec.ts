@@ -1,5 +1,5 @@
 import { Cell } from '../../src/models';
-import { neighbourhood, reconcile, interact, Position } from '../../src/player';
+import { neighbourhood, reconcile, interact, removeDuplicates, Position } from '../../src/player';
 
 describe('neighbourhood', () => {
     it('should return neighbours of an x,y pair and itself', () => {
@@ -161,5 +161,39 @@ describe('interact', () => {
 
             expect(newCell).to.deep.equal(new Cell(1, 2, 'dead'));
         });
+    });
+});
+
+describe('removeDuplicates', () => {
+    it('should return the same array if all elements are unique', () => {
+        const res = removeDuplicates([
+            [2, 3],
+            [1, 3],
+            [1, 4]
+        ])
+
+        expect(res).to.deep.equal([
+            [2, 3],
+            [1, 3],
+            [1, 4]
+        ]);
+    });
+
+    it('should return only the last of the duplicate elements', () => {
+        const res = removeDuplicates([
+            [2, 3],
+            [1, 3],
+            [2, 3],
+            [1, 4],
+            [2, 3],
+        ])
+
+        console.log(res);
+
+        expect(res).to.deep.equal([
+            [1, 3],
+            [1, 4],
+            [2, 3],
+        ]);
     });
 });

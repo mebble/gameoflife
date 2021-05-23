@@ -37,3 +37,10 @@ export const interact = (cell: Cell, neighbourhood: Cell[]): Cell => {
 
     return new Cell(cell.x, cell.y, 'dead');
 };
+
+export const removeDuplicates = (xs: Position[]): Position[] => {
+    return xs.filter((x, i) => {
+        const nextIndex = i + 1;
+        return !xs.slice(nextIndex).some(y => x[0] === y[0] && x[1] === y[1]);
+    });
+};
