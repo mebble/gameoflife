@@ -1,5 +1,5 @@
 import { Cell } from '../../src/models';
-import { neighbourhood, reconcile, Position } from '../../src/player';
+import { neighbourhood, reconcile, interact, Position } from '../../src/player';
 
 describe('neighbourhood', () => {
     it('should return neighbours of an x,y pair and itself', () => {
@@ -61,5 +61,105 @@ describe('reconcile', () => {
             new Cell(0, 1, 'alive'),
             new Cell(0, 2, 'dead'),
         ]);
+    });
+});
+
+describe('interact', () => {
+    it('return a dead cell when the cell has no neighbours', () => {
+        const cell1 = new Cell(1, 2, 'alive');
+        const cell2 = new Cell(3, 4, 'dead');
+
+        expect(interact(cell1, [])).to.deep.equal(new Cell(1, 2, 'dead'));
+        expect(interact(cell2, [])).to.deep.equal(new Cell(3, 4, 'dead'));
+    });
+
+    describe('live cell', () => {
+        const cell = new Cell(1, 2, 'alive');
+
+        it('return a dead cell when a live cell has fewer than two live neighbours', () => {
+            const neighbours = [
+                new Cell(0, 1, 'alive'),
+                new Cell(0, 2, 'dead'),
+                new Cell(0, 3, 'dead'),
+            ];
+
+            const newCell = interact(cell, neighbours);
+
+            expect(newCell).to.deep.equal(new Cell(1, 2, 'dead'));
+        });
+
+        it('return a live cell when a live cell has two or three live neighbours', () => {
+            const neighbours1 = [
+                new Cell(0, 1, 'alive'),
+                new Cell(0, 2, 'alive'),
+                new Cell(0, 3, 'dead'),
+            ];
+            const neighbours2 = [
+                new Cell(0, 1, 'alive'),
+                new Cell(0, 2, 'alive'),
+                new Cell(0, 3, 'alive'),
+                new Cell(0, 4, 'dead'),
+            ];
+
+            const newCell1 = interact(cell, neighbours1);
+            const newCell2 = interact(cell, neighbours2);
+
+            expect(newCell1).to.deep.equal(new Cell(1, 2, 'alive'));
+            expect(newCell2).to.deep.equal(new Cell(1, 2, 'alive'));
+        });
+
+        it('return a dead cell when a live cell has more than three live neighbours', () => {
+            const neighbours = [
+                new Cell(0, 1, 'alive'),
+                new Cell(0, 2, 'alive'),
+                new Cell(0, 3, 'alive'),
+                new Cell(0, 4, 'alive'),
+            ];
+
+            const newCell = interact(cell, neighbours);
+
+            expect(newCell).to.deep.equal(new Cell(1, 2, 'dead'));
+        });
+    });
+
+    describe('dead cell', () => {
+        const cell = new Cell(1, 2, 'dead');
+
+        it('return a live cell when a dead cell has exactly than three live neighbours', () => {
+            const neighbours = [
+                new Cell(0, 1, 'alive'),
+                new Cell(0, 2, 'alive'),
+                new Cell(0, 3, 'alive'),
+            ];
+
+            const newCell = interact(cell, neighbours);
+
+            expect(newCell).to.deep.equal(new Cell(1, 2, 'alive'));
+        });
+
+        it('return a dead cell when a dead cell has less than three live neighbours', () => {
+            const neighbours = [
+                new Cell(0, 1, 'alive'),
+                new Cell(0, 2, 'alive'),
+                new Cell(0, 3, 'dead'),
+            ];
+
+            const newCell = interact(cell, neighbours);
+
+            expect(newCell).to.deep.equal(new Cell(1, 2, 'dead'));
+        });
+
+        it('return a dead cell when a dead cell has more than three live neighbours', () => {
+            const neighbours = [
+                new Cell(0, 1, 'alive'),
+                new Cell(0, 2, 'alive'),
+                new Cell(0, 3, 'alive'),
+                new Cell(0, 4, 'alive'),
+            ];
+
+            const newCell = interact(cell, neighbours);
+
+            expect(newCell).to.deep.equal(new Cell(1, 2, 'dead'));
+        });
     });
 });

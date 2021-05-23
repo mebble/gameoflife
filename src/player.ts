@@ -19,3 +19,21 @@ export const reconcile = (positions: Position[], cells: Cell[]): Cell[] => {
             : new Cell(x, y, 'dead');
     });
 };
+
+export const interact = (cell: Cell, neighbourhood: Cell[]): Cell => {
+    const numLiveNeighbours = neighbourhood
+        .filter(c => c.isAlive())
+        .length;
+
+    if (cell.isAlive()) {
+        if (numLiveNeighbours === 2 || numLiveNeighbours === 3) {
+            return new Cell(cell.x, cell.y, 'alive');
+        }
+    } else {
+        if (numLiveNeighbours === 3) {
+            return new Cell(cell.x, cell.y, 'alive');
+        }
+    }
+
+    return new Cell(cell.x, cell.y, 'dead');
+};
