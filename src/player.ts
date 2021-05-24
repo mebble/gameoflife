@@ -29,9 +29,10 @@ export const interact = (cell: Cell, neighbourhood: Cell[]): Cell => {
         if (numLiveNeighbours === 2 || numLiveNeighbours === 3) {
             return new Cell(cell.x, cell.y, 'alive');
         }
+        return new Cell(cell.x, cell.y, 'dying');
     } else {
         if (numLiveNeighbours === 3) {
-            return new Cell(cell.x, cell.y, 'alive');
+            return new Cell(cell.x, cell.y, 'spawning');
         }
     }
 

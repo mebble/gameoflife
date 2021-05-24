@@ -1,4 +1,4 @@
-type State = 'alive' | 'dead';
+type State = 'spawning' | 'alive' | 'dying' | 'dead';
 
 export default class Cell {
     public x: number;
@@ -12,6 +12,6 @@ export default class Cell {
     }
 
     isAlive(): boolean {
-        return this.state === 'alive';
+        return this.state === 'spawning' || this.state === 'alive';
     }
 }

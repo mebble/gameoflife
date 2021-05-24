@@ -65,18 +65,14 @@ describe('reconcile', () => {
 });
 
 describe('interact', () => {
-    it('return a dead cell when the cell has no neighbours', () => {
-        const cell1 = new Cell(1, 2, 'alive');
-        const cell2 = new Cell(3, 4, 'dead');
-
-        expect(interact(cell1, [])).to.deep.equal(new Cell(1, 2, 'dead'));
-        expect(interact(cell2, [])).to.deep.equal(new Cell(3, 4, 'dead'));
-    });
-
     describe('live cell', () => {
         const cell = new Cell(1, 2, 'alive');
 
-        it('return a dead cell when a live cell has fewer than two live neighbours', () => {
+        it('return a dying cell when a live cell has no neighbours', () => {
+            expect(interact(cell, [])).to.deep.equal(new Cell(1, 2, 'dying'));
+        });
+
+        it('return a dying cell when a live cell has fewer than two live neighbours', () => {
             const neighbours = [
                 new Cell(0, 1, 'alive'),
                 new Cell(0, 2, 'dead'),
@@ -85,7 +81,7 @@ describe('interact', () => {
 
             const newCell = interact(cell, neighbours);
 
-            expect(newCell).to.deep.equal(new Cell(1, 2, 'dead'));
+            expect(newCell).to.deep.equal(new Cell(1, 2, 'dying'));
         });
 
         it('return a live cell when a live cell has two or three live neighbours', () => {
@@ -108,7 +104,7 @@ describe('interact', () => {
             expect(newCell2).to.deep.equal(new Cell(1, 2, 'alive'));
         });
 
-        it('return a dead cell when a live cell has more than three live neighbours', () => {
+        it('return a dying cell when a live cell has more than three live neighbours', () => {
             const neighbours = [
                 new Cell(0, 1, 'alive'),
                 new Cell(0, 2, 'alive'),
@@ -118,14 +114,18 @@ describe('interact', () => {
 
             const newCell = interact(cell, neighbours);
 
-            expect(newCell).to.deep.equal(new Cell(1, 2, 'dead'));
+            expect(newCell).to.deep.equal(new Cell(1, 2, 'dying'));
         });
     });
 
     describe('dead cell', () => {
         const cell = new Cell(1, 2, 'dead');
 
-        it('return a live cell when a dead cell has exactly than three live neighbours', () => {
+        it('return a dead cell when a dead cell has no neighbours', () => {
+            expect(interact(cell, [])).to.deep.equal(new Cell(1, 2, 'dead'));
+        });
+
+        it('return a spawning cell when a dead cell has exactly than three live neighbours', () => {
             const neighbours = [
                 new Cell(0, 1, 'alive'),
                 new Cell(0, 2, 'alive'),
@@ -134,7 +134,7 @@ describe('interact', () => {
 
             const newCell = interact(cell, neighbours);
 
-            expect(newCell).to.deep.equal(new Cell(1, 2, 'alive'));
+            expect(newCell).to.deep.equal(new Cell(1, 2, 'spawning'));
         });
 
         it('return a dead cell when a dead cell has less than three live neighbours', () => {

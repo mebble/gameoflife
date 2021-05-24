@@ -8,8 +8,20 @@ describe('cell isAlive', () => {
         expect(cell.isAlive()).to.be.true;
     });
 
+    it('should be true when state is spawning', () => {
+        const cell = new Cell(10, 10, 'spawning');
+
+        expect(cell.isAlive()).to.be.true;
+    });
+
     it('should be false when state is dead', () => {
         const cell = new Cell(10, 10, 'dead');
+
+        expect(cell.isAlive()).to.be.false;
+    });
+
+    it('should be false when state is dying', () => {
+        const cell = new Cell(10, 10, 'dying');
 
         expect(cell.isAlive()).to.be.false;
     });
