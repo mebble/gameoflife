@@ -24,6 +24,10 @@ export default class Generation {
         return new Generation(newCells);
     }
 
+    appendCell(cell: Cell): void {
+        this.cells.push(cell);
+    }
+
     draw(sketch: any, coordMapper: (x: number, y: number) => [number, number]): void {
         sketch.fill('black');
         for (const cell of this.cells) {

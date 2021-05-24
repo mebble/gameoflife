@@ -18,7 +18,7 @@
         ]);
         new p5((sketch) => {
             sketch.setup = () => {
-                const canvas = sketch.createCanvas(200, 200);
+                const canvas = sketch.createCanvas(500, 500);
                 canvas.parent('canvas-container');
             };
 
@@ -26,12 +26,18 @@
                 sketch.background('white');
                 generation.draw(sketch, (cellX, cellY) => [cellX * 10, cellY * 10]);
             };
+
+            sketch.mouseDragged = () => {
+                const [cellX, cellY] = [Math.floor(sketch.mouseX / 10), Math.floor(sketch.mouseY / 10)];
+                const cell = new Cell(cellX, cellY, 'alive');
+                generation.appendCell(cell);
+            };
         });
     });
 
     setInterval(() => {
         generation = generation.play();
-    }, 200);
+    }, 100);
 </script>
 
 <main>
