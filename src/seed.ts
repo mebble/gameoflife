@@ -61,6 +61,41 @@ const seeds: Seed[] = [
         ]
     },
     {
+        name: 'Simkin Glider Gun',
+        info: 'https://conwaylife.com/wiki/Simkin_glider_gun',
+        value: [
+            new Cell(7, 7, 'alive'),
+            new Cell(8, 7, 'alive'),
+            new Cell(14, 7, 'alive'),
+            new Cell(15, 7, 'alive'),
+            new Cell(7, 8, 'alive'),
+            new Cell(8, 8, 'alive'),
+            new Cell(14, 8, 'alive'),
+            new Cell(15, 8, 'alive'),
+            new Cell(11, 10, 'alive'),
+            new Cell(12, 10, 'alive'),
+            new Cell(11, 11, 'alive'),
+            new Cell(12, 11, 'alive'),
+            new Cell(29, 16, 'alive'),
+            new Cell(33, 16, 'alive'),
+            new Cell(28, 17, 'alive'),
+            new Cell(33, 17, 'alive'),
+            new Cell(34, 17, 'alive'),
+            new Cell(27, 18, 'alive'),
+            new Cell(28, 18, 'alive'),
+            new Cell(34, 18, 'alive'),
+            new Cell(35, 18, 'alive'),
+            new Cell(38, 18, 'alive'),
+            new Cell(39, 18, 'alive'),
+            new Cell(28, 19, 'alive'),
+            new Cell(29, 19, 'alive'),
+            new Cell(34, 19, 'alive'),
+            new Cell(38, 19, 'alive'),
+            new Cell(39, 19, 'alive'),
+            new Cell(29, 20, 'alive'),
+        ]
+    },
+    {
         name: 'Empty',
         value: []
     }
