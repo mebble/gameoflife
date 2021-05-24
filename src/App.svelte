@@ -68,8 +68,8 @@
         <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">Conway's Game of Life Wiki</a>
         <div id="inputs">
             <div class="parameters">
-                <label>Scale: {scaling}<input type="range" step="1" min="3" max="15" bind:value={scaling}></label>
-                <label>Tick: {gameTickMs}<input type="range" step="100" min="50" max="1000" bind:value={gameTickMs}></label>
+                <label class="range">Scale: {scaling}<input type="range" step="1" min="3" max="15" bind:value={scaling}></label>
+                <label class="range">Tick: {gameTickMs}<input type="range" step="100" min="50" max="1000" bind:value={gameTickMs}></label>
             </div>
             <div class="parameters">
                 <label>Intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
@@ -126,6 +126,11 @@
     }
     .parameters > * + * {
         margin-left: .5rem;
+    }
+
+    label.range {
+        display: flex;
+        flex-direction: column;
     }
 
     #canvas-container {
