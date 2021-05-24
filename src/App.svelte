@@ -8,9 +8,10 @@
 	export let name: string;
 
     let generation = new Generation([]);
+    let selectedSeed = seeds[0];
+    $: generation = new Generation(selectedSeed.value);
 
     onMount(() => {
-        generation = new Generation(seeds[0].value);
         new p5((sketch) => {
             sketch.setup = () => {
                 const canvas = sketch.createCanvas(500, 500);
@@ -37,11 +38,15 @@
 
 <main>
 	<h1>Hello {name}!</h1>
-    <select name="seed">
+    <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">Conway's Game of Life Wiki</a><br/>
+    <select name="seed" bind:value={selectedSeed}>
         {#each seeds as seed}
             <option value={seed}>{seed.name}</option>
         {/each}
-    </select>
+    </select><br />
+    {#if selectedSeed}
+        <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
+    {/if}
     <div id="canvas-container"></div>
 </main>
 
