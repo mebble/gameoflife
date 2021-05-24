@@ -137,7 +137,7 @@
     }
 
 	@media (min-width: 640px) {
-        #parameters > * + * {
+        .parameters > * + * {
             margin-left: 1rem;
         }
 	}
