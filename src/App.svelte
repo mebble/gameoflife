@@ -3,19 +3,14 @@
     import p5 from 'p5';
     import Cell from './Cell';
     import Generation from './Generation';
+    import seeds from './seed';
 
 	export let name: string;
 
     let generation = new Generation([]);
 
     onMount(() => {
-        generation = new Generation([
-            new Cell(2, 1, 'alive'),
-            new Cell(3, 2, 'alive'),
-            new Cell(1, 3, 'alive'),
-            new Cell(2, 3, 'alive'),
-            new Cell(3, 3, 'alive'),
-        ]);
+        generation = new Generation(seeds[0].value);
         new p5((sketch) => {
             sketch.setup = () => {
                 const canvas = sketch.createCanvas(500, 500);
@@ -42,6 +37,11 @@
 
 <main>
 	<h1>Hello {name}!</h1>
+    <select name="seed">
+        {#each seeds as seed}
+            <option value={seed}>{seed.name}</option>
+        {/each}
+    </select>
     <div id="canvas-container"></div>
 </main>
 
