@@ -65,7 +65,7 @@
 <main>
     <header>
         <h1>Conway's Game of Life</h1>
-        <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">Conway's Game of Life Wiki</a>
+        <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">What is the Game of Life</a> | <a href="https://github.com/mebble/gameoflife">This project's code</a>
         <div id="inputs">
             <div class="parameters">
                 <label class="range">Scale: {scaling}x<input type="range" step="1" min="3" max="15" bind:value={scaling}></label>
