@@ -29,10 +29,17 @@ export default class Generation {
         this.cells.push(cell);
     }
 
-    draw(sketch: any, coordMapper: (x: number, y: number) => [number, number]): void {
-        // sketch.noStroke();
-        for (const cell of this.cells) {
-            sketch.fill(this.colourMap(cell.state));
+    draw(sketch: any, coordMapper: (x: number, y: number) => [number, number], intermediates: boolean, withStrokes: boolean): void {
+        if (withStrokes) {
+            sketch.stroke('black');
+        } else {
+            sketch.noStroke();
+        }
+        const cells = intermediates
+            ? this.cells
+            : this.cells.filter(cell => cell.isAlive());
+        for (const cell of cells) {
+            sketch.fill(intermediates ? this.colourMap(cell.state) : this.binaryColourMap(cell));
             const [x, y] = coordMapper(cell.x, cell.y);
             sketch.rect(x, y, 10, 10);
         }
@@ -51,5 +58,11 @@ export default class Generation {
             default:
                 return 'purple';
         }
+    }
+
+    private binaryColourMap(cell: Cell): string {
+        return cell.isAlive()
+            ? 'black'
+            : 'white';
     }
 }

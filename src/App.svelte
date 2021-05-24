@@ -7,6 +7,8 @@
 
 	export let name: string;
 
+    let withIntermediates = false;
+    let withStrokes = false;
     let generation = new Generation([]);
     let selectedSeed = seeds[0];
     $: generation = new Generation(selectedSeed.value);
@@ -20,7 +22,7 @@
 
             sketch.draw = () => {
                 sketch.background('white');
-                generation.draw(sketch, (cellX, cellY) => [cellX * 10, cellY * 10]);
+                generation.draw(sketch, (cellX, cellY) => [cellX * 10, cellY * 10], withIntermediates, withStrokes);
             };
 
             sketch.mouseDragged = () => {
@@ -47,6 +49,8 @@
     {#if selectedSeed}
         <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
     {/if}
+    <label>With intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
+    <label>With strokes: <input type="checkbox" bind:checked={withStrokes}></label>
     <div id="canvas-container"></div>
 </main>
 
