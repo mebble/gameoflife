@@ -64,6 +64,9 @@
     function handleClear() {
         generation = new Generation([]);
     }
+    function handleReset() {
+        generation = new Generation(selectedSeed.value);
+    }
 </script>
 
 <main>
@@ -86,6 +89,7 @@
                     {/each}
                 </select>
                 <button type="button" on:click={handleClear}>Clear</button>
+                <button type="button" on:click={handleReset}>Reset</button>
             </div>
         </div>
         {#if selectedSeed && selectedSeed.info}
