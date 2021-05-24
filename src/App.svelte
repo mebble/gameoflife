@@ -96,7 +96,9 @@
             <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
         {/if}
     </header>
-    <div id="canvas-container"></div>
+    <div id="canvas-container">
+        <p id="gen">Generation: {generation.id}</p>
+    </div>
 </main>
 
 <style>
@@ -106,13 +108,13 @@
 	}
 
 	main {
-		text-align: center;
         padding: 0;
         margin: 0;
         margin-top: 2rem;
 	}
 
     header {
+        text-align: center;
         padding-left: 0.5rem;
         padding-right: 0.5rem;
     }
@@ -146,6 +148,12 @@
 
     #canvas-container {
         margin-top: 1.5rem;
+    }
+
+    #gen {
+        margin: 0;
+        margin-bottom: .5rem;
+        margin-left: .5rem;
     }
 
     :global(canvas) {

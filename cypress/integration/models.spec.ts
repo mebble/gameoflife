@@ -33,7 +33,15 @@ describe('generation play', () => {
 
         const nextGen = gen.play();
 
-        expect(nextGen).to.deep.equal(new Generation([]));
+        expect(nextGen).to.deep.equal(new Generation([], 2));
+    });
+
+    it('should return the next generation whose id is one greater than the current one', () => {
+        const gen = new Generation([], 3);
+
+        const nextGen = gen.play();
+
+        expect(nextGen).to.deep.equal(new Generation([], 4));
     });
 
     it('should play the box pattern', () => {
@@ -46,7 +54,12 @@ describe('generation play', () => {
 
         const nextGen = gen.play();
 
-        expect(nextGen).to.deep.equal(gen);
+        expect(nextGen).to.deep.equal(new Generation([
+            new Cell(1, 1, 'alive'),
+            new Cell(2, 1, 'alive'),
+            new Cell(1, 2, 'alive'),
+            new Cell(2, 2, 'alive'),
+        ], 2));
     });
 
     it('should play the blinker pattern', () => {
@@ -64,7 +77,7 @@ describe('generation play', () => {
             new Cell(2, 2, 'alive'),
             new Cell(3, 2, 'spawning'),
             new Cell(2, 3, 'dying'),
-        ]));
+        ], 2));
     });
 
     it('should play the glider pattern', () => {
@@ -86,6 +99,6 @@ describe('generation play', () => {
             new Cell(2, 3, 'alive'),
             new Cell(3, 3, 'alive'),
             new Cell(2, 4, 'spawning'),
-        ]));
+        ], 2));
     });
 });

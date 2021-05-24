@@ -3,10 +3,12 @@ import type { State } from './Cell';
 import { neighbourhood, reconcile, interact, removeDuplicates } from './player';
 
 export default class Generation {
+    public id: number;
     private cells: Cell[];
 
-    constructor(cells: Cell[]) {
+    constructor(cells: Cell[], id: number = 1) {
         this.cells = cells;
+        this.id = id;
     }
 
     play(): Generation {
@@ -22,7 +24,7 @@ export default class Generation {
             })
             .filter(cell => cell.state !== 'dead');
 
-        return new Generation(newCells);
+        return new Generation(newCells, this.id + 1);
     }
 
     appendCell(cell: Cell): void {
