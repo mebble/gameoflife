@@ -60,6 +60,9 @@
     function isWithin(x: number, y: number, w: number, h: number): boolean {
         return (0 < x && x < w) && (0 < y && y < h);
     }
+    function handleClear() {
+        generation = new Generation([]);
+    }
 </script>
 
 <main>
@@ -75,11 +78,14 @@
                 <label>Intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
                 <label>Strokes: <input type="checkbox" bind:checked={withStrokes}></label>
             </div>
-            <select name="seed" bind:value={selectedSeed}>
-                {#each seeds as seed}
-                    <option value={seed}>{seed.name}</option>
-                {/each}
-            </select>
+            <div class="parameters">
+                <select name="seed" bind:value={selectedSeed}>
+                    {#each seeds as seed}
+                        <option value={seed}>{seed.name}</option>
+                    {/each}
+                </select>
+                <button type="button" on:click={handleClear}>Clear</button>
+            </div>
         </div>
         {#if selectedSeed && selectedSeed.info}
             <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
