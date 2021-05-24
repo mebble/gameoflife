@@ -6,18 +6,20 @@
     import seeds from './seed';
     import { getTickStore } from './stores';
 
-    const gameTick = getTickStore(100);
-
     let scaling = 5;
     let withIntermediates = false;
     let withStrokes = false;
     let generation = new Generation([]);
     let selectedSeed = seeds[0];
+    let gameTickMs = 100;
+    let gameTick = getTickStore(gameTickMs);
 
     $: generation = new Generation(selectedSeed.value);
-    gameTick.subscribe(() => {
+    $: gameTick = getTickStore(gameTickMs);
+    $: {
+        $gameTick
         generation = generation.play();
-    });
+    }
 
     onMount(() => {
         new p5((sketch) => {
@@ -65,8 +67,11 @@
         <h1>Conway's Game of Life</h1>
         <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">Conway's Game of Life Wiki</a>
         <div id="inputs">
-            <div id="parameters">
-                <label>Scale: <input type="range" step="1" min="3" max="15" bind:value={scaling}></label>
+            <div class="parameters">
+                <label>Scale: {scaling}<input type="range" step="1" min="3" max="15" bind:value={scaling}></label>
+                <label>Tick: {gameTickMs}<input type="range" step="100" min="50" max="1000" bind:value={gameTickMs}></label>
+            </div>
+            <div class="parameters">
                 <label>Intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
                 <label>Strokes: <input type="checkbox" bind:checked={withStrokes}></label>
             </div>
@@ -109,17 +114,17 @@
         margin: 1rem 0;
     }
 
-    #parameters {
+    .parameters {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 1rem;
     }
-    #parameters > * {
+    .parameters > * {
         height: max-content;
         margin: 0;
     }
-    #parameters > * + * {
+    .parameters > * + * {
         margin-left: .5rem;
     }
 
