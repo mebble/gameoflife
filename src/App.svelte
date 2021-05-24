@@ -5,8 +5,6 @@
     import Generation from './Generation';
     import seeds from './seed';
 
-	export let name: string;
-
     let withIntermediates = false;
     let withStrokes = false;
     let generation = new Generation([]);
@@ -39,20 +37,22 @@
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-    <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">Conway's Game of Life Wiki</a>
-    <div id="parameters">
-        <select name="seed" bind:value={selectedSeed}>
-            {#each seeds as seed}
-                <option value={seed}>{seed.name}</option>
-            {/each}
-        </select>
-        <label>Intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
-        <label>Strokes: <input type="checkbox" bind:checked={withStrokes}></label>
-    </div>
-    {#if selectedSeed}
-        <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
-    {/if}
+    <header>
+        <h1>Conway's Game of Life</h1>
+        <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">Conway's Game of Life Wiki</a>
+        <div id="parameters">
+            <select name="seed" bind:value={selectedSeed}>
+                {#each seeds as seed}
+                    <option value={seed}>{seed.name}</option>
+                {/each}
+            </select>
+            <label>Intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
+            <label>Strokes: <input type="checkbox" bind:checked={withStrokes}></label>
+        </div>
+        {#if selectedSeed}
+            <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
+        {/if}
+    </header>
     <div id="canvas-container"></div>
 </main>
 
@@ -64,14 +64,17 @@
 
 	main {
 		text-align: center;
-		margin: 0;
         padding: 0;
+        margin: 0;
+        margin-top: 2rem;
 	}
 
+    header {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+    }
+
 	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
 		font-weight: 100;
 	}
 
@@ -79,7 +82,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 1rem .5rem;
+        margin: 1rem 0;
     }
     #parameters > * {
         height: max-content;
