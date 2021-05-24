@@ -4,6 +4,6 @@
 
 Live at [cgof.netlify.app](https://cgof.netlify.app/)
 
-<p style="text-align: center">
+<p style="width: max-content; margin: auto">
     <img src="/docs/screenshot.png" alt="Screenshot of the Game of Life demo" />
 </p>
