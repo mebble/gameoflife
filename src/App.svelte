@@ -158,6 +158,8 @@
 
     :global(canvas) {
         border: solid 1px black;
+        display: block;
+        margin: auto;
     }
 
 	@media (min-width: 640px) {
