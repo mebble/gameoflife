@@ -96,6 +96,17 @@ const seeds: Seed[] = [
         ]
     },
     {
+        name: 'R-pentomino',
+        info: 'https://www.conwaylife.com/wiki/R-pentomino',
+        value: [
+            new Cell(27, 31, 'alive'),
+            new Cell(28, 31, 'alive'),
+            new Cell(26, 32, 'alive'),
+            new Cell(27, 32, 'alive'),
+            new Cell(27, 33, 'alive'),
+        ]
+    },
+    {
         name: 'Empty',
         value: []
     }
