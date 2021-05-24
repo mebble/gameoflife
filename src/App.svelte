@@ -34,6 +34,9 @@
             };
 
             sketch.mouseDragged = () => {
+                if (!isWithin(sketch.mouseX, sketch.mouseY, sketch.width, sketch.height)) {
+                    return;
+                }
                 const [mouseXCoord, mouseYCoord] = [pixelToCoord(sketch.mouseX), pixelToCoord(sketch.mouseY)];
                 [
                     [mouseXCoord,     mouseYCoord],
@@ -44,9 +47,7 @@
                     const cell = new Cell(x, y, 'alive');
                     generation.appendCell(cell);
                 });
-                if (isWithin(sketch.mouseX, sketch.mouseY, sketch.width, sketch.height)) {
-                    return false;
-                }
+                return false;
             };
         });
     });
