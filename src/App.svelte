@@ -96,7 +96,7 @@
         margin: 0;
     }
     #parameters > * + * {
-        margin-left: 1rem;
+        margin-left: .5rem;
     }
 
     #canvas-container {
@@ -104,8 +104,8 @@
     }
 
 	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
+        #parameters > * + * {
+            margin-left: 1rem;
+        }
 	}
 </style>
