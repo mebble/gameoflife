@@ -29,7 +29,7 @@ export default class Generation {
         this.cells.push(cell);
     }
 
-    draw(sketch: any, coordMapper: (x: number, y: number) => [number, number], intermediates: boolean, withStrokes: boolean): void {
+    draw(sketch: any, coordMapper: (x: number, y: number) => [number, number, number], intermediates: boolean, withStrokes: boolean): void {
         if (withStrokes) {
             sketch.stroke('black');
         } else {
@@ -40,8 +40,8 @@ export default class Generation {
             : this.cells.filter(cell => cell.isAlive());
         for (const cell of cells) {
             sketch.fill(intermediates ? this.colourMap(cell.state) : this.binaryColourMap(cell));
-            const [x, y] = coordMapper(cell.x, cell.y);
-            sketch.rect(x, y, 10, 10);
+            const [x, y, s] = coordMapper(cell.x, cell.y);
+            sketch.rect(x, y, s, s);
         }
     }
 

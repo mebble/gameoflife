@@ -5,6 +5,7 @@
     import Generation from './Generation';
     import seeds from './seed';
 
+    let scaling = 5;
     let withIntermediates = false;
     let withStrokes = false;
     let generation = new Generation([]);
@@ -20,7 +21,7 @@
 
             sketch.draw = () => {
                 sketch.background('white');
-                generation.draw(sketch, (cellX, cellY) => [coordToPixel(cellX), coordToPixel(cellY)], withIntermediates, withStrokes);
+                generation.draw(sketch, (cellX, cellY) => [coordToPixel(cellX), coordToPixel(cellY), scaling], withIntermediates, withStrokes);
             };
 
             sketch.mouseDragged = () => {
@@ -36,10 +37,10 @@
     }, 100);
 
     function pixelToCoord(pixel: number): number {
-        return Math.floor(pixel / 10);
+        return Math.floor(pixel / scaling);
     }
     function coordToPixel(coord: number): number {
-        return coord * 10;
+        return coord * scaling;
     }
 </script>
 
@@ -47,14 +48,17 @@
     <header>
         <h1>Conway's Game of Life</h1>
         <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">Conway's Game of Life Wiki</a>
-        <div id="parameters">
+        <div id="inputs">
+            <div id="parameters">
+                <label>Scale: <input type="range" step="1" min="3" max="15" bind:value={scaling}></label>
+                <label>Intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
+                <label>Strokes: <input type="checkbox" bind:checked={withStrokes}></label>
+            </div>
             <select name="seed" bind:value={selectedSeed}>
                 {#each seeds as seed}
                     <option value={seed}>{seed.name}</option>
                 {/each}
             </select>
-            <label>Intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
-            <label>Strokes: <input type="checkbox" bind:checked={withStrokes}></label>
         </div>
         {#if selectedSeed}
             <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
@@ -85,11 +89,15 @@
 		font-weight: 100;
 	}
 
+    #inputs {
+        margin: 1rem 0;
+    }
+
     #parameters {
         display: flex;
         justify-content: center;
         align-items: center;
-        margin: 1rem 0;
+        margin-bottom: 1rem;
     }
     #parameters > * {
         height: max-content;
