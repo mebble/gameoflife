@@ -72,7 +72,7 @@
         <div id="inputs">
             <div class="parameters">
                 <label class="range">Scale: {scaling}x<input type="range" step="1" min="3" max="15" bind:value={scaling}></label>
-                <label class="range">Tick: {gameTickMs} ms<input type="range" step="100" min="50" max="1000" bind:value={gameTickMs}></label>
+                <label class="range">Tick: {gameTickMs} ms<input type="range" step="50" min="50" max="1000" bind:value={gameTickMs}></label>
             </div>
             <div class="parameters">
                 <label>Intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
