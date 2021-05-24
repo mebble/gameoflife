@@ -59,9 +59,11 @@ describe('generation play', () => {
         const nextGen = gen.play();
 
         expect(nextGen).to.deep.equal(new Generation([
-            new Cell(1, 2, 'alive'),
+            new Cell(2, 1, 'dying'),
+            new Cell(1, 2, 'spawning'),
             new Cell(2, 2, 'alive'),
-            new Cell(3, 2, 'alive'),
+            new Cell(3, 2, 'spawning'),
+            new Cell(2, 3, 'dying'),
         ]));
     });
 
@@ -77,11 +79,13 @@ describe('generation play', () => {
         const nextGen = gen.play();
 
         expect(nextGen).to.deep.equal(new Generation([
-            new Cell(1, 2, 'alive'),
+            new Cell(2, 1, 'dying'),
+            new Cell(1, 2, 'spawning'),
+            new Cell(1, 3, 'dying'),
             new Cell(3, 2, 'alive'),
             new Cell(2, 3, 'alive'),
             new Cell(3, 3, 'alive'),
-            new Cell(2, 4, 'alive'),
+            new Cell(2, 4, 'spawning'),
         ]));
     });
 });

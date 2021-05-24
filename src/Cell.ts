@@ -1,4 +1,4 @@
-type State = 'spawning' | 'alive' | 'dying' | 'dead';
+export type State = 'spawning' | 'alive' | 'dying' | 'dead';
 
 export default class Cell {
     public x: number;
