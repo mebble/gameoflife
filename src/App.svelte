@@ -20,11 +20,11 @@
 
             sketch.draw = () => {
                 sketch.background('white');
-                generation.draw(sketch, (cellX, cellY) => [cellX * 10, cellY * 10], withIntermediates, withStrokes);
+                generation.draw(sketch, (cellX, cellY) => [coordToPixel(cellX), coordToPixel(cellY)], withIntermediates, withStrokes);
             };
 
             sketch.mouseDragged = () => {
-                const [cellX, cellY] = [Math.floor(sketch.mouseX / 10), Math.floor(sketch.mouseY / 10)];
+                const [cellX, cellY] = [pixelToCoord(sketch.mouseX), pixelToCoord(sketch.mouseY)];
                 const cell = new Cell(cellX, cellY, 'alive');
                 generation.appendCell(cell);
             };
@@ -34,6 +34,13 @@
     setInterval(() => {
         generation = generation.play();
     }, 100);
+
+    function pixelToCoord(pixel: number): number {
+        return Math.floor(pixel / 10);
+    }
+    function coordToPixel(coord: number): number {
+        return coord * 10;
+    }
 </script>
 
 <main>
