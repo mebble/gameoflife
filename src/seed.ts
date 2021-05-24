@@ -107,6 +107,23 @@ const seeds: Seed[] = [
         ]
     },
     {
+        name: 'Blooming Honey Farm',
+        info: 'https://www.conwaylife.com/wiki/Honey_farm',
+        value: [
+            new Cell(12, 11, 'alive'),
+            new Cell(13, 12, 'alive'),
+            new Cell(11, 13, 'alive'),
+            new Cell(12, 13, 'alive'),
+            new Cell(13, 13, 'alive'),
+            new Cell(22, 21, 'alive'),
+            new Cell(21, 22, 'alive'),
+            new Cell(23, 22, 'alive'),
+            new Cell(21, 23, 'alive'),
+            new Cell(23, 23, 'alive'),
+            new Cell(22, 24, 'alive'),
+        ]
+    },
+    {
         name: 'Empty',
         value: []
     }
