@@ -124,6 +124,32 @@ const seeds: Seed[] = [
         ]
     },
     {
+        name: 'Queen Bee Shuttle',
+        info: 'https://www.conwaylife.com/wiki/Queen_bee_shuttle',
+        value: [
+            new Cell(17, 16, 'alive'),
+            new Cell(15, 17, 'alive'),
+            new Cell(17, 17, 'alive'),
+            new Cell(14, 18, 'alive'),
+            new Cell(16, 18, 'alive'),
+            new Cell(8, 19, 'alive'),
+            new Cell(9, 19, 'alive'),
+            new Cell(13, 19, 'alive'),
+            new Cell(16, 19, 'alive'),
+            new Cell(28, 19, 'alive'),
+            new Cell(29, 19, 'alive'),
+            new Cell(8, 20, 'alive'),
+            new Cell(9, 20, 'alive'),
+            new Cell(14, 20, 'alive'),
+            new Cell(16, 20, 'alive'),
+            new Cell(28, 20, 'alive'),
+            new Cell(29, 20, 'alive'),
+            new Cell(15, 21, 'alive'),
+            new Cell(17, 21, 'alive'),
+            new Cell(17, 22, 'alive'),
+        ]
+    },
+    {
         name: 'Empty',
         value: []
     }
