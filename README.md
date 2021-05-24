@@ -4,4 +4,4 @@
 
 Live at [cgof.netlify.app](https://cgof.netlify.app/)
 
-[Screenshot of the Game of Life demo](/docs/screenshot.png)
+![Screenshot of the Game of Life demo](/docs/screenshot.png)
