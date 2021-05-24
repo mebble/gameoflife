@@ -25,9 +25,16 @@
             };
 
             sketch.mouseDragged = () => {
-                const [cellX, cellY] = [pixelToCoord(sketch.mouseX), pixelToCoord(sketch.mouseY)];
-                const cell = new Cell(cellX, cellY, 'alive');
-                generation.appendCell(cell);
+                const [mouseXCoord, mouseYCoord] = [pixelToCoord(sketch.mouseX), pixelToCoord(sketch.mouseY)];
+                [
+                    [mouseXCoord,     mouseYCoord],
+                    [mouseXCoord + 1, mouseYCoord],
+                    [mouseXCoord,     mouseYCoord + 1],
+                    [mouseXCoord + 1, mouseYCoord + 1],
+                ].forEach(([x, y]) => {
+                    const cell = new Cell(x, y, 'alive');
+                    generation.appendCell(cell);
+                });
                 if (isWithin(sketch.mouseX, sketch.mouseY, sketch.width, sketch.height)) {
                     return false;
                 }
