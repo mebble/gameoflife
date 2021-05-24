@@ -1,4 +1,5 @@
-import { Cell, Generation } from '../../src/models';
+import Cell from '../../src/Cell';
+import Generation from '../../src/Generation';
 
 describe('cell isAlive', () => {
     it('should be true when state is alive', () => {

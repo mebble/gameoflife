@@ -1,4 +1,4 @@
-import { Cell } from "./models";
+import Cell from './Cell';
 
 export type Position = [x: number, y: number];
 

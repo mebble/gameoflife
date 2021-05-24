@@ -1,7 +1,8 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import p5 from 'p5';
-    import { Generation, Cell } from './models';
+    import Cell from './Cell';
+    import Generation from './Generation';
 
 	export let name: string;
 

@@ -1,4 +1,4 @@
-import { Cell } from '../../src/models';
+import Cell from '../../src/Cell';
 import { neighbourhood, reconcile, interact, removeDuplicates, Position } from '../../src/player';
 
 describe('neighbourhood', () => {
