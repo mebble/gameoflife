@@ -2,7 +2,7 @@ import Cell from './Cell';
 
 export type Seed = {
     name: string,
-    info: string,
+    info?: string,
     value: Cell[]
 };
 
@@ -60,6 +60,10 @@ const seeds: Seed[] = [
             new Cell(15, 10, 'alive'),
         ]
     },
+    {
+        name: 'Empty',
+        value: []
+    }
 ];
 
 export default seeds;

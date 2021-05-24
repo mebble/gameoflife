@@ -81,7 +81,7 @@
                 {/each}
             </select>
         </div>
-        {#if selectedSeed}
+        {#if selectedSeed && selectedSeed.info}
             <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
         {/if}
     </header>
