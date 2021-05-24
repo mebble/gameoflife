@@ -15,7 +15,7 @@
     onMount(() => {
         new p5((sketch) => {
             sketch.setup = () => {
-                const canvas = sketch.createCanvas(sketch.windowWidth, sketch.windowHeight);
+                const canvas = sketch.createCanvas(sketch.windowWidth - 20, sketch.windowHeight - 30);
                 canvas.parent('canvas-container');
             };
 
@@ -28,6 +28,9 @@
                 const [cellX, cellY] = [pixelToCoord(sketch.mouseX), pixelToCoord(sketch.mouseY)];
                 const cell = new Cell(cellX, cellY, 'alive');
                 generation.appendCell(cell);
+                if (isWithin(sketch.mouseX, sketch.mouseY, sketch.width, sketch.height)) {
+                    return false;
+                }
             };
         });
     });
@@ -41,6 +44,9 @@
     }
     function coordToPixel(coord: number): number {
         return coord * scaling;
+    }
+    function isWithin(x: number, y: number, w: number, h: number): boolean {
+        return (0 < x && x < w) && (0 < y && y < h);
     }
 </script>
 
@@ -109,6 +115,10 @@
 
     #canvas-container {
         margin-top: 1.5rem;
+    }
+
+    :global(canvas) {
+        border: solid 1px black;
     }
 
 	@media (min-width: 640px) {
