@@ -4,13 +4,20 @@
     import Cell from './Cell';
     import Generation from './Generation';
     import seeds from './seed';
+    import { getTickStore } from './stores';
+
+    const gameTick = getTickStore(100);
 
     let scaling = 5;
     let withIntermediates = false;
     let withStrokes = false;
     let generation = new Generation([]);
     let selectedSeed = seeds[0];
+
     $: generation = new Generation(selectedSeed.value);
+    gameTick.subscribe(() => {
+        generation = generation.play();
+    });
 
     onMount(() => {
         new p5((sketch) => {
@@ -41,10 +48,6 @@
             };
         });
     });
-
-    setInterval(() => {
-        generation = generation.play();
-    }, 100);
 
     function pixelToCoord(pixel: number): number {
         return Math.floor(pixel / scaling);
