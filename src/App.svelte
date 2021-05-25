@@ -6,7 +6,7 @@
     import seeds from './seed';
     import { getTickStore } from './stores';
 
-    let scaling = 5;
+    let scaling = 8;
     let withTransitions = false;
     let withStrokes = false;
     let generation = new Generation([]);
