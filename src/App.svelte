@@ -73,7 +73,7 @@
     <header>
         <h1>Conway's Game of Life</h1>
         <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">What is the Game of Life</a> | <a href="https://github.com/mebble/gameoflife">This project's code</a>
-        <div id="inputs">
+        <form id="inputs" autocomplete="off">
             <div class="parameters">
                 <label class="range">Scale: {scaling}x<input type="range" step="1" min="3" max="15" bind:value={scaling}></label>
                 <label class="range">Tick: {gameTickMs} ms<input type="range" step="50" min="50" max="1000" bind:value={gameTickMs}></label>
@@ -91,7 +91,7 @@
                 <button type="button" on:click={handleClear}>Clear</button>
                 <button type="button" on:click={handleReset}>Reset</button>
             </div>
-        </div>
+        </form>
         {#if selectedSeed && selectedSeed.info}
             <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
         {/if}
