@@ -41,7 +41,7 @@ export default class Generation {
             ? this.cells
             : this.cells.filter(cell => cell.isAlive());
         for (const cell of cells) {
-            sketch.fill(intermediates ? this.colourMap(cell.state) : this.binaryColourMap(cell));
+            sketch.fill(intermediates ? this.colourMap(cell.state) : 'black');
             const [x, y, s] = coordMapper(cell.x, cell.y);
             sketch.rect(x, y, s, s);
         }
@@ -51,8 +51,6 @@ export default class Generation {
         switch(cellState) {
             case 'alive':
                 return 'black';
-            case 'dead':
-                return 'white';
             case 'spawning':
                 return 'rgba(0, 200, 100, 1)';
             case 'dying':
@@ -60,11 +58,5 @@ export default class Generation {
             default:
                 return 'purple';
         }
-    }
-
-    private binaryColourMap(cell: Cell): string {
-        return cell.isAlive()
-            ? 'black'
-            : 'white';
     }
 }
