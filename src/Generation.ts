@@ -52,11 +52,11 @@ export default class Generation {
             case 'alive':
                 return 'black';
             case 'spawning':
-                return 'rgba(0, 200, 100, 1)';
+                return '#f67280';
             case 'dying':
-                return 'rgba(255, 0, 0, 0.5)';
+                return '#6639a6';
             default:
-                return 'purple';
+                return 'white';
         }
     }
 }
