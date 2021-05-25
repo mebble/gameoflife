@@ -7,7 +7,7 @@
     import { getTickStore } from './stores';
 
     let scaling = 5;
-    let withIntermediates = false;
+    let withTransitions = false;
     let withStrokes = false;
     let generation = new Generation([]);
     let selectedSeed = seeds[0];
@@ -30,7 +30,7 @@
 
             sketch.draw = () => {
                 sketch.background('white');
-                generation.draw(sketch, (cellX, cellY) => [coordToPixel(cellX), coordToPixel(cellY), scaling], withIntermediates, withStrokes);
+                generation.draw(sketch, (cellX, cellY) => [coordToPixel(cellX), coordToPixel(cellY), scaling], withTransitions, withStrokes);
             };
 
             sketch.mouseDragged = () => {
@@ -79,7 +79,7 @@
                 <label class="range">Tick: {gameTickMs} ms<input type="range" step="50" min="50" max="1000" bind:value={gameTickMs}></label>
             </div>
             <div class="parameters">
-                <label>Intermediate states: <input type="checkbox" bind:checked={withIntermediates}></label>
+                <label>Transitions: <input type="checkbox" bind:checked={withTransitions}></label>
                 <label>Strokes: <input type="checkbox" bind:checked={withStrokes}></label>
             </div>
             <div class="parameters">
