@@ -132,6 +132,8 @@
 
 	h1 {
 		font-weight: 100;
+        margin: 0;
+        margin-bottom: 0.75rem;
 	}
 
     a.info::before {
@@ -168,6 +170,9 @@
     label.range {
         display: flex;
         flex-direction: column;
+    }
+    label.range > input {
+        margin-bottom: 0;
     }
 
     #canvas-container {
