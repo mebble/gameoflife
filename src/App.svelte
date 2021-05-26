@@ -72,7 +72,18 @@
 <main>
     <header>
         <h1>Conway's Game of Life</h1>
-        <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">What is the Game of Life</a> | <a href="https://github.com/mebble/gameoflife">This project's code</a>
+        <details>
+            <summary>What's This About?</summary>
+            <div id="info">
+                <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">👉 What is the Game of Life?</a>
+                <a href="https://github.com/mebble/gameoflife">👉 This project's code</a>
+                <p>
+                    This little web app demonstrates Conway's Game of Life. In the canvas, you'll see a bunch of black cells interacting with each other.
+                    Black cells are considered to be alive and they play by the rules of the Game of Life. You can drag your mouse on the canvas to create more. There are a few parameters you can use to control how the game looks.
+                    If you turn on "Transitions", you'll also see cells that are transitioning between being alive and being dead. Red cells are ones that are coming to live. Purple cells are dying.
+                </p>
+            </div>
+        </details>
         <form id="inputs" autocomplete="off">
             <div class="parameters">
                 <label class="range">Scale: {scaling}x<input type="range" step="1" min="3" max="15" bind:value={scaling}></label>
@@ -102,7 +113,7 @@
 </main>
 
 <style>
-    :global(body) {
+    :global(body), :global(p) {
 		padding: 0;
         margin: 0;
 	}
@@ -122,6 +133,15 @@
 	h1 {
 		font-weight: 100;
 	}
+
+    #info {
+        display: flex;
+        flex-direction: column;
+        margin: .5rem auto;
+    }
+    #info > * {
+        margin-bottom: 0.25rem;
+    }
 
     #inputs {
         margin: 1rem 0;
