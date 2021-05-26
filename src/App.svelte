@@ -75,8 +75,8 @@
         <details>
             <summary>What's This About?</summary>
             <div id="info">
-                <a href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">👉 What is the Game of Life?</a>
-                <a href="https://github.com/mebble/gameoflife">👉 This project's code</a>
+                <a class="info" href="https://www.conwaylife.com/wiki/Conway's_Game_of_Life">What is the Game of Life?</a>
+                <a class="info" href="https://github.com/mebble/gameoflife">This project's code</a>
                 <p>
                     This little web app demonstrates Conway's Game of Life. In the canvas, you'll see a bunch of black cells interacting with each other.
                     Black cells are considered to be alive and they play by the rules of the Game of Life. You can drag your mouse on the canvas to create more. There are a few parameters you can use to control how the game looks.
@@ -104,7 +104,7 @@
             </div>
         </form>
         {#if selectedSeed && selectedSeed.info}
-            <a href={selectedSeed.info}>👉 {selectedSeed.name} Wiki</a>
+            <a class="info" href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
         {/if}
     </header>
     <div id="canvas-container">
@@ -133,6 +133,10 @@
 	h1 {
 		font-weight: 100;
 	}
+
+    a.info::before {
+        content: "👉 ";
+    }
 
     #info {
         display: flex;
