@@ -104,7 +104,7 @@
             </div>
         </form>
         {#if selectedSeed && selectedSeed.info}
-            <a href={selectedSeed.info}>{selectedSeed.name} Wiki</a>
+            <a href={selectedSeed.info}>👉 {selectedSeed.name} Wiki</a>
         {/if}
     </header>
     <div id="canvas-container">
