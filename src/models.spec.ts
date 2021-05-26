@@ -1,29 +1,29 @@
-import Cell from '../../src/Cell';
-import Generation from '../../src/Generation';
+import Cell from './Cell';
+import Generation from './Generation';
 
 describe('cell isAlive', () => {
     it('should be true when state is alive', () => {
         const cell = new Cell(10, 10, 'alive');
 
-        expect(cell.isAlive()).to.be.true;
+        expect(cell.isAlive()).toBe(true);
     });
 
     it('should be true when state is spawning', () => {
         const cell = new Cell(10, 10, 'spawning');
 
-        expect(cell.isAlive()).to.be.true;
+        expect(cell.isAlive()).toBe(true);
     });
 
     it('should be false when state is dead', () => {
         const cell = new Cell(10, 10, 'dead');
 
-        expect(cell.isAlive()).to.be.false;
+        expect(cell.isAlive()).toBe(false);
     });
 
     it('should be false when state is dying', () => {
         const cell = new Cell(10, 10, 'dying');
 
-        expect(cell.isAlive()).to.be.false;
+        expect(cell.isAlive()).toBe(false);
     });
 });
 
@@ -33,7 +33,7 @@ describe('generation play', () => {
 
         const nextGen = gen.play();
 
-        expect(nextGen).to.deep.equal(new Generation([], 2));
+        expect(nextGen).toEqual(new Generation([], 2));
     });
 
     it('should return the next generation whose id is one greater than the current one', () => {
@@ -41,7 +41,7 @@ describe('generation play', () => {
 
         const nextGen = gen.play();
 
-        expect(nextGen).to.deep.equal(new Generation([], 4));
+        expect(nextGen).toEqual(new Generation([], 4));
     });
 
     it('should play the box pattern', () => {
@@ -54,7 +54,7 @@ describe('generation play', () => {
 
         const nextGen = gen.play();
 
-        expect(nextGen).to.deep.equal(new Generation([
+        expect(nextGen).toEqual(new Generation([
             new Cell(1, 1, 'alive'),
             new Cell(2, 1, 'alive'),
             new Cell(1, 2, 'alive'),
@@ -71,7 +71,7 @@ describe('generation play', () => {
 
         const nextGen = gen.play();
 
-        expect(nextGen).to.deep.equal(new Generation([
+        expect(nextGen).toEqual(new Generation([
             new Cell(2, 1, 'dying'),
             new Cell(1, 2, 'spawning'),
             new Cell(2, 2, 'alive'),
@@ -91,7 +91,7 @@ describe('generation play', () => {
 
         const nextGen = gen.play();
 
-        expect(nextGen).to.deep.equal(new Generation([
+        expect(nextGen).toEqual(new Generation([
             new Cell(2, 1, 'dying'),
             new Cell(1, 2, 'spawning'),
             new Cell(1, 3, 'dying'),
