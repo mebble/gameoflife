@@ -80,7 +80,7 @@
                 <p>
                     This little web app demonstrates Conway's Game of Life. In the canvas, you'll see a bunch of black cells interacting with each other.
                     Black cells are considered to be alive and they play by the rules of the Game of Life. You can drag your mouse on the canvas to create more. There are a few parameters you can use to control how the game looks.
-                    If you turn on "Transitions", you'll also see cells that are transitioning between being alive and being dead. Red cells are ones that are coming to live. Purple cells are dying.
+                    If you turn on "Transitions", you'll also see cells that are transitioning between being alive and being dead. Red cells are ones that are coming to life. Purple cells are dying.
                 </p>
             </div>
         </details>
