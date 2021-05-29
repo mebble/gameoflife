@@ -150,6 +150,39 @@ const seeds: Seed[] = [
         ]
     },
     {
+        name: 'Honey Farm Dance',
+        value: [
+            new Cell(44, 17, 'alive'),
+            new Cell(43, 18, 'alive'),
+            new Cell(45, 18, 'alive'),
+            new Cell(43, 19, 'alive'),
+            new Cell(45, 19, 'alive'),
+            new Cell(44, 20, 'alive'),
+            new Cell(39, 22, 'alive'),
+            new Cell(40, 22, 'alive'),
+            new Cell(48, 22, 'alive'),
+            new Cell(49, 22, 'alive'),
+            new Cell(38, 23, 'alive'),
+            new Cell(41, 23, 'alive'),
+            new Cell(47, 23, 'alive'),
+            new Cell(50, 23, 'alive'),
+            new Cell(39, 24, 'alive'),
+            new Cell(40, 24, 'alive'),
+            new Cell(44, 24, 'alive'),
+            new Cell(48, 24, 'alive'),
+            new Cell(49, 24, 'alive'),
+            new Cell(43, 25, 'alive'),
+            new Cell(44, 25, 'alive'),
+            new Cell(45, 25, 'alive'),
+            new Cell(44, 26, 'alive'),
+            new Cell(43, 27, 'alive'),
+            new Cell(45, 27, 'alive'),
+            new Cell(43, 28, 'alive'),
+            new Cell(45, 28, 'alive'),
+            new Cell(44, 29, 'alive'),
+        ]
+    },
+    {
         name: 'Empty',
         value: []
     }
