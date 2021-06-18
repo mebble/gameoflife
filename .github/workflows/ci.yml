@@ -8,42 +8,44 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Use Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: '12.x'
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-build-
-      - name: Install dependencies
-        run: yarn install --frozen-lockfile
-      - name: Jest
-        run: yarn test
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - uses: actions/checkout@v2
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node_modules-build-
-      - name: Build and deploy to Netlify
-        uses: jsmrcaga/action-netlify-deploy@v1.1.0
-        with:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-          NETLIFY_DEPLOY_TO_PROD: true
-          build_directory: public/
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: public
-          path: public/
+      # - name: Cache dependencies
+      #   uses: actions/cache@v2
+      #   with:
+      #     path: node_modules
+      #     key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/yarn.lock') }}
+      #     restore-keys: |
+      #       ${{ runner.os }}-node_modules-build-
+      # - name: Install dependencies
+      #   run: yarn install --frozen-lockfile
+      # - name: Jest
+      #   run: yarn test
+      - name: Echo
+        run: echo 'We are in CI'
+  # deploy:
+  #   needs: test
+  #   runs-on: ubuntu-latest
+  #   if: github.ref == 'refs/heads/main'
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #     - name: Cache dependencies
+  #       uses: actions/cache@v2
+  #       with:
+  #         path: node_modules
+  #         key: ${{ runner.os }}-node_modules-build-${{ hashFiles('**/yarn.lock') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-node_modules-build-
+  #     - name: Build and deploy to Netlify
+  #       uses: jsmrcaga/action-netlify-deploy@v1.1.0
+  #       with:
+  #         NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+  #         NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+  #         NETLIFY_DEPLOY_TO_PROD: true
+  #         build_directory: public/
+  #     - name: Upload build artifact
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: public
+  #         path: public/
